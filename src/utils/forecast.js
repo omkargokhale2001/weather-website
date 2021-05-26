@@ -10,13 +10,28 @@ const forecast=(long,lat,callback)=>{
             callback("Enter correct coordinates lol!")
         }
         else{
-            data0=response.body.location.name
-            data1=response.body.current.temperature
-            data2=response.body.current.feelslike
-            data3=response.body.current.weather_descriptions
+            region=response.body.location.name
+            temp=response.body.current.temperature
+            feels_temp=response.body.current.feelslike
+            descrip=response.body.current.weather_descriptions
+            country = response.body.location.country
+            pressure = response.body.current.pressure
+            humidity = response.body.current.humidity
+            is_day = response.body.current.is_day
+            if(is_day==="no"){
+                day_night = "Night"
+            }
+            else{
+                day_night = "Day"
+            }
 
-            const data=data3+"."+"The temperature is "+String(data1)+".But it feels like it is "+String(data2)+"."
-            callback(undefined,data)
+            const data = {
+                line1:"Location:"+region+", "+country,
+                line2:"Temperature: "+String(temp)+"(Feels like "+String(feels_temp)+")",
+                line3:"Pressure:"+pressure+"\nHumidity:"+humidity,
+                line4:day_night+" time..",
+            }
+                callback(undefined,data)
         }   
         })
 }
