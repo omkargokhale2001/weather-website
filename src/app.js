@@ -51,7 +51,7 @@ app.get('/about',(req,res)=>{
 app.get('/help',(req,res)=>{
     res.render('help',{
         title:"Help",
-        message:"Help is always provided, all you have to do is ask.",
+        message:"You can navigate the upper links to access different pages, type the place name and click on find to see the weather!",
         name:"Omkar"
     })
 })
